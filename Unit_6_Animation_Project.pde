@@ -3,6 +3,9 @@
 Star[] myStars;
 int numstars;
 
+Ripple [] myRipples;
+int numRipples;
+
 color green = #6a994e;
 color darkGreen = #386641;
 color pink = #ffc2d1;
@@ -32,13 +35,26 @@ void setup() {
     myStars[i] = new Star();
     i ++;
   }
+  
+  //Ripples
+  numRipples = 200;
+  myRipples = new Ripple[numRipples];
+  int k = 0;
+  while (k < numRipples){
+    myRipples [i] = new Ripple();
+    k++;  
+  }
+  
+  
 }
 
 
 
 void draw() {
   int i = 0;
+  int j = 0;
   background(0);
+  ground();
 
   while (i < numstars) {
     myStars[i].show();
@@ -46,7 +62,13 @@ void draw() {
     i++;
   }
   
-  ground();
+  while (j < numRipples) {
+    myRipples [j] = new Ripple();
+    myRipples[j].show();
+    myRipples[j].act();
+    j++;
+  }
+  
 }
 
 
@@ -56,8 +78,6 @@ void buildings() {
   noStroke();
   fill(grey);
   rect(0, 0, 400, 180);
-
-
   popMatrix();
 }
 
